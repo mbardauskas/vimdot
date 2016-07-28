@@ -1,0 +1,60 @@
+" Minimalist VIM config
+" Type [:help 'optionname'] for more info about each option
+
+set nocompatible          " no vi compatibility (usually off by default)
+
+" Core options
+
+" Disable arrow keys in normal mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+set tabstop=2             " tab width
+set shiftwidth=2          " number of spaces when shifting (>> and <<)
+set softtabstop=2         " delete 2 spaces when pressing backspace
+set expandtab             " insert spaces when tab is pressed
+set autoindent            " copy indentation of previous line if there are no file type overrides
+
+set mouse=a               " enable mouse in all modes
+set scrolloff=3           " keep 3 lines top/bottom when scrolling
+
+set relativenumber        " show line numbers
+set number                " show exact number on active line
+
+set laststatus=2          " show status line always, not only with splits
+set showcmd               " show command while it is being typed in in vis mode
+set ruler                 " show cursor position in status bar
+set showmode              " show active mode
+
+set hlsearch              " highlight search results
+set ignorecase            " ignore search and autocomplete case
+set incsearch             " search for a pattern while it is being typed
+
+set wildmenu              " cool command autocompletion
+set wildmode=list:longest,full " command autocompletion behaviour
+
+set nobackup              " no backup files (default)
+set wrap                  " wrap long lines, not same as break (default)
+set nomodeline            " disable options for vim in last lines (security - default)
+set backspace=indent,eol,start " normalize bs behavior: bs over newline, etc (default)
+
+set splitright            " open vertical split in right instead of left
+set splitbelow            " open vertical split in bottom instead of top
+
+set encoding=UTF-8        " default file encoding
+
+syntax on                 " enable syntax highlight
+
+filetype plugin indent on " enable filetypes detection, plugins and indent
+
+" display trailing whitespace and tabs with special chars & long lines
+
+set list listchars=tab:»·,extends:»,precedes:«,trail:·
+
+" remappings
+
+noremap j gj              " when scrolling down in wrapped line scroll screen line
+noremap k gk              " when scrolling up in wrapped line scroll screen line
+
