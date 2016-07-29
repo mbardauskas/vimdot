@@ -1,3 +1,47 @@
+"NeoBundle Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath^=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+NeoBundle 'tpope/vim-obsession'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'scrooloose/nerdTree'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+"NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'jquery,underscore,angular,react,jasmine,chai'
+
+NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
+
+" You can specify revision/branch/tag.
+"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+
 " Minimalist VIM config
 " Type [:help 'optionname'] for more info about each option
 
@@ -45,7 +89,8 @@ set splitbelow            " open vertical split in bottom instead of top
 
 set encoding=UTF-8        " default file encoding
 
-syntax on                 " enable syntax highlight
+syntax enable             " enable syntax highlight
+colorscheme cobalt2
 
 filetype plugin indent on " enable filetypes detection, plugins and indent
 
