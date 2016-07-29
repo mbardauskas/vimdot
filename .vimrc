@@ -55,6 +55,7 @@ set nocompatible          " no vi compatibility (usually off by default)
 "noremap <Left> <NOP>
 "noremap <Right> <NOP>
 
+set clipboard+=unnamedplus " can use clipboard
 set tabstop=2             " tab width
 set shiftwidth=2          " number of spaces when shifting (>> and <<)
 set softtabstop=2         " delete 2 spaces when pressing backspace
