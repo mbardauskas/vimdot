@@ -100,6 +100,6 @@ set list listchars=tab:»·,extends:»,precedes:«,trail:·
 
 " remappings
 
-noremap j gj              " when scrolling down in wrapped line scroll screen line
-noremap k gk              " when scrolling up in wrapped line scroll screen line
+"noremap j gj              " when scrolling down in wrapped line scroll screen line
+"noremap k gk              " when scrolling up in wrapped line scroll screen line
 
