@@ -50,10 +50,10 @@ set nocompatible          " no vi compatibility (usually off by default)
 " Core options
 
 " Disable arrow keys in normal mode
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
 
 set tabstop=2             " tab width
 set shiftwidth=2          " number of spaces when shifting (>> and <<)
