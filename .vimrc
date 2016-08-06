@@ -14,15 +14,21 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 "NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'moll/vim-node'
 NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'othree/yajs.vim'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'jquery,underscore,angular,react,jasmine,chai'
 
