@@ -17,7 +17,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-obsession'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'scrooloose/nerdTree'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 "NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'pangloss/vim-javascript'
@@ -104,3 +103,4 @@ set list listchars=tab:»·,extends:»,precedes:«,trail:·
 "noremap j gj              " when scrolling down in wrapped line scroll screen line
 "noremap k gk              " when scrolling up in wrapped line scroll screen line
 
+let g:netrw_liststyle=3
