@@ -73,6 +73,7 @@ set laststatus=2          " show status line always, not only with splits
 set showcmd               " show command while it is being typed in in vis mode
 set ruler                 " show cursor position in status bar
 set showmode              " show active mode
+set showmatch             " show matching brackets
 
 set hlsearch              " highlight search results
 set ignorecase            " ignore search and autocomplete case
