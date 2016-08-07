@@ -62,6 +62,7 @@ set nocompatible          " no vi compatibility (usually off by default)
 "noremap <Left> <NOP>
 "noremap <Right> <NOP>
 
+set t_Co=256
 set pastetoggle=<F4>
 set clipboard+=unnamedplus " can use clipboard
 set tabstop=2             " tab width
