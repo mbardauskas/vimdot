@@ -35,6 +35,7 @@ NeoBundle 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'jquery,underscore,angular,react,jasmine,chai'
 
 NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
+NeoBundle 'blueshirts/darcula'
 
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -103,7 +104,7 @@ set splitbelow            " open vertical split in bottom instead of top
 set encoding=UTF-8        " default file encoding
 
 syntax enable             " enable syntax highlight
-colorscheme cobalt2
+colorscheme darcula
 
 filetype plugin indent on " enable filetypes detection, plugins and indent
 
