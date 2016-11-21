@@ -26,6 +26,7 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 "NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'isRuslan/vim-es6'
+NeoBundle 'mxw/vim-jsx'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'moll/vim-node'
 NeoBundle 'cakebaker/scss-syntax.vim'
@@ -118,3 +119,4 @@ set list listchars=tab:»·,extends:»,precedes:«,trail:·
 "noremap k gk              " when scrolling up in wrapped line scroll screen line
 
 let g:netrw_liststyle=3
+let g:jsx_ext_required=0
