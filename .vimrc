@@ -14,6 +14,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
+NeoBundle 'Shutnik/jshint2.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'mxw/vim-jsx'
