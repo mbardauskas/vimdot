@@ -68,7 +68,7 @@ set nocompatible          " no vi compatibility (usually off by default)
 
 set t_Co=256
 set pastetoggle=<F4>
-set clipboard+=unnamedplus " can use clipboard
+"set clipboard+=unnamedplus " can use clipboard
 set tabstop=2             " tab width
 set shiftwidth=2          " number of spaces when shifting (>> and <<)
 set softtabstop=2         " delete 2 spaces when pressing backspace
