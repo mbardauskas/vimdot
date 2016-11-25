@@ -16,7 +16,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 NeoBundle 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
-imap <Tab> <C-N>
 
 NeoBundle 'Shutnik/jshint2.vim'
 NeoBundle 'vim-airline/vim-airline'
