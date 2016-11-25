@@ -17,7 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
 
-NeoBundle 'Shutnik/jshint2.vim'
+NeoBundle 'neomake/neomake'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'mxw/vim-jsx'
@@ -121,6 +121,21 @@ set list listchars=tab:»·,extends:»,precedes:«,trail:·
 
 "noremap j gj              " when scrolling down in wrapped line scroll screen line
 "noremap k gk              " when scrolling up in wrapped line scroll screen line
+
+" Function to rename the variable under the cursor
+function! Rnvar()
+  let word_to_replace = expand("<cword>")
+  let replacement = input("new name: ")
+  execute '%s/\(\W\)' . word_to_replace . '\(\W\)/\1' . replacement . '\2/gc'
+endfunction
+
+noremap gr :call Rnvar()<enter>
+
+let g:neomake_javascript_enabled_makers = ['eslint']
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+
+autocmd! BufWritePost,BufEnter * Neomake
 
 let g:netrw_liststyle=3
 let g:jsx_ext_required=0
