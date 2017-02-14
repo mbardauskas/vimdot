@@ -1,0 +1,129 @@
+snippet demo11
+  const express = require('express');
+  const graphqlHTTP = require('express-graphql');
+  const graphql = require('graphql');
+  const fetch = require('node-fetch');
+  const DataLoader = require('dataloader');
+
+snippet demo12
+  const {
+    GraphQLList,
+    GraphQLObjectType,
+    GraphQLSchema,
+    GraphQLString,
+  } = graphql;
+
+snippet demo13
+  const get = (url) => {
+    console.log('REQUEST TO:', url);
+    return fetch(\`${url}?format=json\`).then(res => res.json());
+  };
+
+snippet demo14
+  const app = express();
+
+  app.use('/graphql', graphqlHTTP({
+    schema: new GraphQLSchema({
+      query: QueryType,
+    }),
+    graphiql: true
+  }));
+
+  app.listen(3000);
+
+snippet demo21
+  const QueryType = new GraphQLObjectType({
+    name: 'Query',
+    fields: () => ({
+      films: {
+        type: new GraphQLList(FilmType),
+        args: {
+          ids: {type: new GraphQLList(GraphQLString)}
+        },
+        resolve: (root, args) => args.ids.map(id => get(\`http://swapi.co/api/films/${id}/\`))
+      }
+    }),
+  });
+
+snippet demo22
+  const FilmType = new GraphQLObjectType({
+    name: 'Film',
+    fields: () => ({
+      title: {type: GraphQLString},
+    }),
+  });
+
+snippet demo23
+  producer: {type: GraphQLString},
+  release_date: {type: GraphQLString},
+  director: {type: GraphQLString},
+  episode_id: {type: GraphQLString},
+  characters: {type: new GraphQLList(GraphQLString)},
+
+snippet demo31d
+  characters: {
+    type: new GraphQLList(CharacterType),
+    resolve: (film) => film.characters.map(get)
+  },
+
+snippet demo32
+  const CharacterType = new GraphQLObjectType({
+    name: 'Character',
+    fields: () => ({
+      name: {type: GraphQLString},
+      height: {type: GraphQLString},
+      mass: {type: GraphQLString},
+      hair_color: {type: GraphQLString},
+    }),
+  });
+
+snippet demo33
+  films: {
+    type: new GraphQLList(FilmType),
+    resolve: (char) => char.films.map(get)
+  }
+
+snippet demo41d
+  resolve: (root, args, context) => context.filmLoader.loadMany(args.ids)
+
+snippet demo42
+  const filmLoader = new DataLoader(
+    ids => Promise.all(ids.map((id) => get(\`http://swapi.co/api/films/${id}/\`)))
+  );
+
+snippet demo43
+  context: {
+    filmLoader,
+  },
+
+snippet demo50
+  const filmMap = new Map();
+
+snippet demo51c
+  ids => Promise.all(ids.map((id) => get(\`http://swapi.co/api/films/${id}/\`))),
+  {
+    cacheKeyFn: key => \`http://swapi.co/api/films/${key}/\`,
+    cacheMap: filmMap,
+  }
+
+snippet demo52
+  const filmByUrlLoader = new DataLoader(
+    urls => Promise.all(urls.map(get)),
+    {cacheMap: filmMap}
+  );
+
+snippet demo53
+  const charByUrlLoader = new DataLoader(
+    urls => Promise.all(urls.map(get))
+  );
+
+snippet demo54
+  charByUrlLoader,
+  filmByUrlLoader,
+
+snippet demo55d
+  resolve: (film, args, context) => context.charByUrlLoader.loadMany(film.characters)
+
+snippet demo56d
+  resolve: (char, args, context) => context.filmByUrlLoader.loadMany(char.films)
+
