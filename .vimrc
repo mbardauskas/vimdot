@@ -44,6 +44,7 @@ let g:used_javascript_libs = 'jquery,underscore,flux,angular,react,jasmine,chai'
 
 NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
 NeoBundle 'blueshirts/darcula'
+NeoBundle 'flazz/vim-colorschemes'
 
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
