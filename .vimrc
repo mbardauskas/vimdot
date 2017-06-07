@@ -14,6 +14,8 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
+NeoBundle 'jreybert/vimagit'
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
 NeoBundle 'Shougo/neosnippet.vim'
@@ -30,6 +32,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 "NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'isRuslan/vim-es6'
 NeoBundle 'mxw/vim-jsx'
@@ -54,6 +57,9 @@ NeoBundle 'flazz/vim-colorschemes'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Toggle NERDtree
+map <C-z> :NERDTreeToggle<CR>
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -161,7 +167,8 @@ function! Rnvar()
   execute '%s/\(\W\)' . word_to_replace . '\(\W\)/\1' . replacement . '\2/gc'
 endfunction
 
-noremap gr :call Rnvar()<enter>
+noremap fr :call Rnvar()<enter>
+let g:neomake_verbose = 3
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
@@ -173,3 +180,10 @@ let g:netrw_liststyle=3
 let g:jsx_ext_required=0
 
 autocmd FileType json setlocal conceallevel=0
+
+" only show files that are not ignored by git
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_extensions = ['line']
+
+" shorten mapping delay so that esc reacts immediately
+set timeoutlen=400
