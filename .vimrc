@@ -168,7 +168,7 @@ function! Rnvar()
 endfunction
 
 noremap fr :call Rnvar()<enter>
-let g:neomake_verbose = 3
+let g:neomake_verbose = 0
 
 let g:neomake_javascript_enabled_makers = ['eslint']
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
