@@ -58,8 +58,10 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
+" Find file in NERDtree
+map <C-z> :NERDTreeFind<CR>
 " Toggle NERDtree
-map <C-z> :NERDTreeToggle<CR>
+map <C-Z> :NERDTreeToggle<CR>
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
