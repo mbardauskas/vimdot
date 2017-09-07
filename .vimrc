@@ -46,9 +46,26 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'jquery,underscore,flux,angular,react,jasmine,chai'
 
+NeoBundle 'sbdchd/neoformat'
 NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
 NeoBundle 'blueshirts/darcula'
 NeoBundle 'flazz/vim-colorschemes'
+
+" Neoformat settings
+let g:neoformat_only_msg_on_error = 1
+let g:neoformat_enabled_javascript = ['prettier', 'eslint']
+let g:neoformat_enabled_json = ['jsontool']
+let g:neoformat_json_jsontool = {
+  \ 'exe': 'python',
+  \ 'args': ['-m', 'json.tool']
+  \}
+let g:neoformat_javascript_prettier = {
+  \ 'exe': 'prettier',
+  \ 'args': ['--stdin', '--single-quote'],
+  \ 'stdin': 1,
+  \ }
+" Neoformat bind
+noremap <silent> <leader>f :Neoformat<cr>
 
 " You can specify revision/branch/tag.
 "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
