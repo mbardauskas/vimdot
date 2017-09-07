@@ -83,6 +83,8 @@ let g:cpp_class_decl_highlight = 1
 
 " Find file in NERDtree
 map <C-z> :NERDTreeFind<CR>
+" the same with shorter command
+cmap nf NERDTreeFind
 " Toggle NERDtree
 map <C-Z> :NERDTreeToggle<CR>
 
