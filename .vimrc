@@ -211,6 +211,7 @@ autocmd FileType json setlocal conceallevel=0
 " only show files that are not ignored by git
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_extensions = ['line']
+let g:ctrlp_use_caching = 0
 
 " shorten mapping delay so that esc reacts immediately
 set timeoutlen=400
