@@ -32,6 +32,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 "NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'isRuslan/vim-es6'
@@ -57,6 +58,11 @@ NeoBundle 'flazz/vim-colorschemes'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" C++ highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
 
 " Find file in NERDtree
 map <C-z> :NERDTreeFind<CR>
