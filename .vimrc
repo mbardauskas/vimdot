@@ -37,6 +37,7 @@ NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'isRuslan/vim-es6'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'mileszs/ack.vim'
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'jsx']}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'moll/vim-node'
@@ -50,6 +51,11 @@ NeoBundle 'sbdchd/neoformat'
 NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
 NeoBundle 'blueshirts/darcula'
 NeoBundle 'flazz/vim-colorschemes'
+
+" Use ag instead of ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " Neoformat settings
 let g:neoformat_only_msg_on_error = 1
