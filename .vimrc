@@ -235,3 +235,6 @@ let g:user_emmet_settings = {
 \}
 
 autocmd FileType html,css,scss,javascript.jsx EmmetInstall
+
+highlight OverLength ctermbg=DarkGrey ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
