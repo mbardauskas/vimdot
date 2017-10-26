@@ -52,6 +52,9 @@ NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
 NeoBundle 'blueshirts/darcula'
 NeoBundle 'flazz/vim-colorschemes'
 
+" GitGutter settings
+cmap uh GitGutterUndoHunk
+
 " Use ag instead of ack
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
