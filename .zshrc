@@ -102,5 +102,7 @@ stty icrnl
 alias gsppp="git stash && git pull origin master && git push origin master && git stash pop"
 alias takedump="/System/Library/CoreServices/\"Menu Extras\"/User.menu/Contents/Resources/CGSession -suspend"
 
+alias getyarnlock="sh ~/dotvim/bashscripts/getyarnlock.sh"
+
 KEYTIMEOUT=1
 
