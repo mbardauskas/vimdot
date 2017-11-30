@@ -104,5 +104,8 @@ alias takedump="/System/Library/CoreServices/\"Menu Extras\"/User.menu/Contents/
 
 alias getyarnlock="sh ~/dotvim/bashscripts/getyarnlock.sh"
 
+alias emulator='set QEMU_AUDIO_DRV=none; /Users/noamc/Development/android-sdk/tools/emulator @Nexus_5_API_23 &> /dev/null'
+alias rr='adb shell am broadcast -a react.native.RELOAD'
+
 KEYTIMEOUT=1
 
