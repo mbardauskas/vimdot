@@ -197,13 +197,13 @@ set list listchars=tab:»·,extends:»,precedes:«,trail:·
 "noremap k gk              " when scrolling up in wrapped line scroll screen line
 
 " Function to rename the variable under the cursor
-function! Rnvar()
+function! RenameVariable()
   let word_to_replace = expand("<cword>")
   let replacement = input("new name: ")
   execute '%s/\(\W\)' . word_to_replace . '\(\W\)/\1' . replacement . '\2/gc'
 endfunction
 
-noremap fr :call Rnvar()<enter>
+noremap fr :call RenameVariable()<enter>
 let g:neomake_verbose = 0
 
 let g:neomake_javascript_enabled_makers = ['eslint']
