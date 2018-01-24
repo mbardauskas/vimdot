@@ -86,8 +86,8 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-export NVM_DIR="/Users/martynasb/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm:w
+#export NVM_DIR="/Users/martynasb/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm:w
 
 alias wstorm='open -a /Applications/WebStorm.app'
 
@@ -102,15 +102,15 @@ stty icrnl
 alias gsppp="git stash && git pull origin master && git push origin master && git stash pop"
 alias takedump="/System/Library/CoreServices/\"Menu Extras\"/User.menu/Contents/Resources/CGSession -suspend"
 
-alias getyarnlock="sh ~/dotvim/bashscripts/getyarnlock.sh"
+alias getyarnlock="sh ~/vimdot/bashscripts/getyarnlock.sh"
 
-alias emulator='set QEMU_AUDIO_DRV=none; /Users/noamc/Development/android-sdk/tools/emulator @Nexus_5_API_23 &> /dev/null'
+# alias emulator='set QEMU_AUDIO_DRV=none; /Users/noamc/Development/android-sdk/tools/emulator @Nexus_5_API_23 &> /dev/null'
 alias rr='adb shell am broadcast -a react.native.RELOAD'
 
 # NVM
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 KEYTIMEOUT=1
 
