@@ -23,7 +23,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'neomake/neomake'
 NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'gabrielelana/vim-markdown'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-obsession'
@@ -34,11 +34,11 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 "NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'ianks/vim-tsx'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'isRuslan/vim-es6'
-NeoBundle 'mxw/vim-jsx'
 NeoBundle 'mileszs/ack.vim'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'jsx']}}
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'jsx', 'typescript', 'tsx']}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'moll/vim-node'
 NeoBundle 'cakebaker/scss-syntax.vim'
@@ -117,8 +117,6 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-let g:neosnippet#snippets_directory='~/dotvim/snippets'
-
 " Required:
 call neobundle#end()
 
@@ -251,10 +249,13 @@ let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \    'extends' : 'jsx',
+\  },
+\  'typescript.tsx' : {
+\    'extends' : 'jsx',
 \  }
 \}
 
-autocmd FileType html,css,scss,javascript.jsx EmmetInstall
+autocmd FileType html,css,scss,javascript.jsx,typescript.tsx EmmetInstall
 
 highlight OverLength ctermbg=DarkGrey ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
