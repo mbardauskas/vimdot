@@ -1,0 +1,23 @@
+VIMDIR=vim_source
+
+cd ~
+rm -rf ~/"$VIMDIR"
+mkdir $VIMDIR
+git clone git@github.com:vim/vim.git $VIMDIR
+cd ~/"$VIMDIR" && exec ./configure \
+  --with-features=huge \
+  --enable-multibyte \
+  --enable-luainterp \
+  --with-lua-prefix=/usr/local/Cellar/lua/5.3.5_1 \
+  --enable-python3interp \
+  --with-python3-config-dir=/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/config-3.7m-darwin \
+  --disable-netbeans \
+  --enable-fail-if-missing
+
+make && sudo make install
+
+# neovim is needed for deoplete
+pip3 install neovim
+
+# make ctags / brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+# brew install ripgrep
