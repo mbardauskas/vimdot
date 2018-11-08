@@ -1,56 +1,57 @@
-"NeoBundle Scripts-----------------------------
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible
 endif
 
-" Required:
-set runtimepath^=~/.vim/bundle/neobundle.vim/
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle'))
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-" Add or remove your Bundles here:
-NeoBundle 'jreybert/vimagit'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Shougo/neocomplete.vim'
-let g:neocomplete#enable_at_startup = 1
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'neomake/neomake'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'gabrielelana/vim-markdown'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'tpope/vim-obsession'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-"NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'octol/vim-cpp-enhanced-highlight'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'ianks/vim-tsx'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'isRuslan/vim-es6'
-NeoBundle 'mileszs/ack.vim'
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript', 'jsx', 'typescript', 'tsx']}}
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'moll/vim-node'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'othree/yajs.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'jquery,underscore,flux,angular,react,jasmine,chai'
+  " Generic
+  call dein#add('jreybert/vimagit')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('honza/vim-snippets')
+  call dein#add('neomake/neomake')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('gabrielelana/vim-markdown')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('jeffkreeftmeijer/vim-numbertoggle')
+  call dein#add('ctrlpvim/ctrlp.vim')
+  "call dein#add('flazz/vim-colorschemes')
+  call dein#add('octol/vim-cpp-enhanced-highlight')
+  call dein#add('mileszs/ack.vim')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('sbdchd/neoformat')
+  call dein#add('gertjanreynaert/cobalt2-vim-theme')
+  call dein#add('blueshirts/darcula')
+  call dein#add('flazz/vim-colorschemes')
 
-NeoBundle 'sbdchd/neoformat'
-NeoBundle 'gertjanreynaert/cobalt2-vim-theme'
-NeoBundle 'blueshirts/darcula'
-NeoBundle 'flazz/vim-colorschemes'
+  "AutoComplete
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  "JavaScript
+  call dein#add('yardnsm/vim-import-cost', { 'build': 'npm install' })
+  call dein#add('maksimr/vim-jsbeautify', { 'on_ft' : ['javascript', 'vim', 'json', 'xml', 'html'] })
+  call dein#add('mtscout6/syntastic-local-eslint.vim')
+  call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
+  call dein#add('pangloss/vim-javascript', { 'on_ft' : ['javascript'] })
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+filetype plugin indent on
 
 " GitGutter settings
 cmap uh GitGutterUndoHunk
@@ -59,25 +60,6 @@ cmap uh GitGutterUndoHunk
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" Neoformat settings
-let g:neoformat_only_msg_on_error = 1
-let g:neoformat_enabled_javascript = ['prettier', 'eslint']
-let g:neoformat_enabled_json = ['jsontool']
-let g:neoformat_json_jsontool = {
-  \ 'exe': 'python',
-  \ 'args': ['-m', 'json.tool']
-  \}
-let g:neoformat_javascript_prettier = {
-  \ 'exe': 'prettier',
-  \ 'args': ['--stdin', '--single-quote'],
-  \ 'stdin': 1,
-  \ }
-" Neoformat bind
-noremap <silent> <leader>f :Neoformat<cr>
-
-" You can specify revision/branch/tag.
-"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
@@ -117,24 +99,9 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+"call neobundle#end()
 
 
-" Minimalist VIM config
-" Type [:help 'optionname'] for more info about each option
-
-set nocompatible          " no vi compatibility (usually off by default)
-
-" Core options
 
 " Disable arrow keys in normal mode
 noremap <Up> <NOP>
