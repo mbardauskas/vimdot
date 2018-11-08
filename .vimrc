@@ -15,7 +15,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('honza/vim-snippets')
-  call dein#add('neomake/neomake')
   call dein#add('vim-airline/vim-airline')
   call dein#add('gabrielelana/vim-markdown')
   call dein#add('mxw/vim-jsx')
@@ -33,17 +32,25 @@ if dein#load_state('~/.cache/dein')
   call dein#add('blueshirts/darcula')
   call dein#add('flazz/vim-colorschemes')
 
+  " Linter
+  call dein#add('w0rp/ale')
+
   "AutoComplete
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+  call dein#add('autozimu/LanguageClient-neovim', {
+  \ 'rev': 'next',
+  \ 'build': 'bash install.sh',
+  \ })
+
+  call dein#add('ludovicchabant/vim-gutentags')
+  call dein#add('kristijanhusak/vim-js-file-import')
 
   "JavaScript
-  call dein#add('yardnsm/vim-import-cost', { 'build': 'npm install' })
   call dein#add('maksimr/vim-jsbeautify', { 'on_ft' : ['javascript', 'vim', 'json', 'xml', 'html'] })
-  call dein#add('mtscout6/syntastic-local-eslint.vim')
   call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
   call dein#add('pangloss/vim-javascript', { 'on_ft' : ['javascript'] })
 
@@ -52,6 +59,95 @@ if dein#load_state('~/.cache/dein')
 endif
 
 filetype plugin indent on
+
+" linter options
+let g:ale_sign_column_always = 1
+let g:ale_lint_delay = 300
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s'
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
+\   'typescript': ['tslint'],
+\}
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver'],
+\   'json': ['jsonlint'],
+\}
+
+" cache dir
+let g:vim_dir = '~/.vim'
+
+function! _ensure_path(path, ...)
+    let l:is_file = a:0 > 0 && a:1 == 1 ? 1 : 0
+    let l:path = resolve(expand(a:path))
+    let l:dir = l:is_file ? fnamemodify(l:path, ':h') : l:path
+    if !isdirectory(l:dir) | call mkdir(l:dir, 'p') | endif
+    return l:path
+endfunction
+
+function! _cache_dir(path)
+    return _ensure_path(g:vim_dir . '/cache/' . a:path)
+endfunction
+
+" AutoComplete
+let g:deoplete#enable_at_startup = 1
+
+let g:gutentags_cache_dir = _cache_dir('gutentags')
+let g:gutentags_file_list_command = 'rg --files'
+let g:gutentags_generate_on_new = 0
+let g:gutentags_project_root_finder = 'GutenTagsProjectRootFinder'
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_init_user_func = 'GutenTagsInit'
+
+function! GutenTagsProjectRootFinder(path) abort
+   if &filetype =~ 'script'
+    let l:file = ale#path#FindNearestFile(bufnr('%'), 'package.json')
+    if !empty(l:file)
+      return fnamemodify(l:file, ':p:h')
+    endif
+   endif
+   let g:gutentags_project_root_finder = ''
+   let l:path = gutentags#get_project_root(a:path)
+   let g:gutentags_project_root_finder = 'GutenTagsProjectRootFinder'
+   return l:path
+endfunction
+
+function! GutenTagsInit(path) abort
+  if a:path =~ '\(fugitive\|.git/index\)'
+    return 0
+  endif
+  return 1
+endfunction
+
+
+" language server
+" npm i -g typescript-language-server
+" npm i -g typescript
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_changeThrottle = 0.5
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['pyls'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
+    \ }
+nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>:normal! m`<CR>
+nnoremap <silent> <leader>b <C-o>
+
+nnoremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>fr :call LanguageClient#textDocument_references()<CR>
+nnoremap <silent> <leader>h :call LanguageClient#textDocument_hover()<CR>
 
 " GitGutter settings
 cmap uh GitGutterUndoHunk
@@ -188,14 +284,6 @@ function! ReplaceTestID() range
 endfunction
 noremap td :call ReplaceTestID()<enter>
 
-
-let g:neomake_verbose = 0
-
-let g:neomake_javascript_enabled_makers = ['eslint']
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
-autocmd! BufWritePost,BufEnter * Neomake
 
 let g:netrw_liststyle=3
 let g:jsx_ext_required=0
