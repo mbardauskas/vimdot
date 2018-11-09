@@ -25,7 +25,7 @@ if dein#load_state('~/.cache/dein')
   " Linter
   call dein#add('w0rp/ale')
 
-  "AutoComplete
+  " AutoComplete
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -39,7 +39,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('ludovicchabant/vim-gutentags')
   call dein#add('kristijanhusak/vim-js-file-import')
 
-  "JavaScript
+  " JavaScript
   call dein#add('leafgarland/typescript-vim')
   call dein#add('maksimr/vim-jsbeautify', { 'on_ft' : ['javascript', 'vim', 'json', 'xml', 'html'] })
   call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
@@ -181,12 +181,13 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
 
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-"call neobundle#end()
+let g:netrw_liststyle=3
+let g:jsx_ext_required=0
+" only show files that are not ignored by git
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_extensions = ['line']
+let g:ctrlp_use_caching = 0
 
 
 
@@ -231,22 +232,18 @@ set backspace=indent,eol,start " normalize bs behavior: bs over newline, etc (de
 
 set splitright            " open vertical split in right instead of left
 set splitbelow            " open vertical split in bottom instead of top
-
 set encoding=UTF-8        " default file encoding
-
+set timeoutlen=400        " shorten mapping delay so that esc reacts immediately
+set list listchars=tab:»·,extends:»,precedes:«,trail:·  " display trailing whitespace and tabs with special chars & long lines
 syntax enable             " enable syntax highlight
 colorscheme darcula
 
 filetype plugin indent on " enable filetypes detection, plugins and indent
 
-" display trailing whitespace and tabs with special chars & long lines
 
-set list listchars=tab:»·,extends:»,precedes:«,trail:·
+" json conceal level
+autocmd FileType json setlocal conceallevel=0
 
-" remappings
-
-"noremap j gj              " when scrolling down in wrapped line scroll screen line
-"noremap k gk              " when scrolling up in wrapped line scroll screen line
 
 " Function to rename the variable under the cursor
 function! RenameVariable()
@@ -255,6 +252,7 @@ function! RenameVariable()
   execute '%s/\(\W\)' . word_to_replace . '\(\W\)/\1' . replacement . '\2/gc'
 endfunction
 noremap fr :call RenameVariable()<enter>
+
 
 " Function to write testID to file
 function! ReplaceTestID() range
@@ -276,19 +274,7 @@ endfunction
 noremap td :call ReplaceTestID()<enter>
 
 
-let g:netrw_liststyle=3
-let g:jsx_ext_required=0
-
-autocmd FileType json setlocal conceallevel=0
-
-" only show files that are not ignored by git
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_extensions = ['line']
-let g:ctrlp_use_caching = 0
-
-" shorten mapping delay so that esc reacts immediately
-set timeoutlen=400
-
+"Emmet conf
 map <expr> <A-w> emmet#expandAbbrIntelligent('<A-w>')
 
 let g:user_emmet_install_global = 0
@@ -303,5 +289,9 @@ let g:user_emmet_settings = {
 
 autocmd FileType html,css,scss,javascript.jsx,typescript.tsx EmmetInstall
 
+
+" change colors after 80 chars
 highlight OverLength ctermbg=DarkGrey ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+
