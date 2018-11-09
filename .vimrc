@@ -2,6 +2,8 @@ if &compatible
   set nocompatible
 endif
 
+let s:VIM_CONFIG_DIR = '~/vimdot'
+
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
@@ -31,10 +33,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  call dein#add('autozimu/LanguageClient-neovim', {
-  \ 'rev': 'next',
-  \ 'build': 'bash install.sh',
-  \ })
+  call dein#add('autozimu/LanguageClient-neovim', { 'rev': 'next', 'build': 'bash install.sh' })
 
   call dein#add('ludovicchabant/vim-gutentags')
   call dein#add('kristijanhusak/vim-js-file-import')
@@ -51,144 +50,22 @@ endif
 
 filetype plugin indent on
 
-" linter options
-let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 300
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s'
-
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'javascript.jsx': ['eslint'],
-\   'typescript': ['tslint'],
-\}
-
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['tsserver'],
-\   'json': ['jsonlint'],
-\}
-
-" cache dir
 let g:vim_dir = '~/.vim'
+let g:netrw_liststyle=3
 
-function! _ensure_path(path, ...)
-    let l:is_file = a:0 > 0 && a:1 == 1 ? 1 : 0
-    let l:path = resolve(expand(a:path))
-    let l:dir = l:is_file ? fnamemodify(l:path, ':h') : l:path
-    if !isdirectory(l:dir) | call mkdir(l:dir, 'p') | endif
-    return l:path
-endfunction
-
-function! _cache_dir(path)
-    return _ensure_path(g:vim_dir . '/cache/' . a:path)
-endfunction
-
-" AutoComplete
-let g:deoplete#enable_at_startup = 1
-
-let g:gutentags_cache_dir = _cache_dir('gutentags')
-let g:gutentags_file_list_command = 'rg --files'
-let g:gutentags_generate_on_new = 0
-let g:gutentags_project_root_finder = 'GutenTagsProjectRootFinder'
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_init_user_func = 'GutenTagsInit'
-
-function! GutenTagsProjectRootFinder(path) abort
-   if &filetype =~ 'script'
-    let l:file = ale#path#FindNearestFile(bufnr('%'), 'package.json')
-    if !empty(l:file)
-      return fnamemodify(l:file, ':p:h')
-    endif
-   endif
-   let g:gutentags_project_root_finder = ''
-   let l:path = gutentags#get_project_root(a:path)
-   let g:gutentags_project_root_finder = 'GutenTagsProjectRootFinder'
-   return l:path
-endfunction
-
-function! GutenTagsInit(path) abort
-  if a:path =~ '\(fugitive\|.git/index\)'
-    return 0
-  endif
-  return 1
-endfunction
-
-
-" language server
-" npm i -g typescript-language-server
-" npm i -g typescript
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_changeThrottle = 0.5
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
-    \ }
-nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>:normal! m`<CR>
-nnoremap <silent> <leader>b <C-o>
-
-nnoremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>fr :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> <leader>h :call LanguageClient#textDocument_hover()<CR>
+exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/core-helpers.vim"
+exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/plugins.config.vim"
+exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/my-functions.vim"
 
 " GitGutter settings
 cmap uh GitGutterUndoHunk
-
-" Use ag instead of ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" C++ highlighting
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-
 " Find file in NERDtree
 map <C-z> :NERDTreeFind<CR>
 " the same with shorter command
 cmap nf NERDTreeFind
 " Toggle NERDtree
 map <C-Z> :NERDTreeToggle<CR>
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 " For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-
-let g:netrw_liststyle=3
-let g:jsx_ext_required=0
-" only show files that are not ignored by git
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_extensions = ['line']
-let g:ctrlp_use_caching = 0
-
 
 
 " Disable arrow keys in normal mode
@@ -197,6 +74,8 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+
+" vim settings
 set t_Co=256
 set pastetoggle=<F4>
 "set clipboard+=unnamedplus " can use clipboard
@@ -239,55 +118,6 @@ syntax enable             " enable syntax highlight
 colorscheme darcula
 
 filetype plugin indent on " enable filetypes detection, plugins and indent
-
-
-" json conceal level
-autocmd FileType json setlocal conceallevel=0
-
-
-" Function to rename the variable under the cursor
-function! RenameVariable()
-  let word_to_replace = expand("<cword>")
-  let replacement = input("new name: ")
-  execute '%s/\(\W\)' . word_to_replace . '\(\W\)/\1' . replacement . '\2/gc'
-endfunction
-noremap fr :call RenameVariable()<enter>
-
-
-" Function to write testID to file
-function! ReplaceTestID() range
-  let [line_start, column_start] = getpos("'<")[1:2]
-  let [line_end, column_end] = getpos("'>")[1:2]
-  let lines = getline(line_start, line_end)
-  if len(lines) == 0
-      return ''
-  endif
-  let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
-  let lines[0] = lines[0][column_start - 1:]
-  let selected_text = join(lines, "\n")
-  let replacement = input("new testID: ")
-  let replacement_const = substitute(replacement, '[{,}]', '', 'g')
-  execute "silent !echo '" . replacement . ": " . selected_text . ",' >> ~/testIDs.js"
-  execute "%s/" . selected_text . '/\{' . replacement . '\}/g'
-  execute "redraw!"
-endfunction
-noremap td :call ReplaceTestID()<enter>
-
-
-"Emmet conf
-map <expr> <A-w> emmet#expandAbbrIntelligent('<A-w>')
-
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\    'extends' : 'jsx',
-\  },
-\  'typescript.tsx' : {
-\    'extends' : 'jsx',
-\  }
-\}
-
-autocmd FileType html,css,scss,javascript.jsx,typescript.tsx EmmetInstall
 
 
 " change colors after 80 chars
