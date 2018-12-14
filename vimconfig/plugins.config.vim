@@ -66,6 +66,12 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
     \ }
+let g:LanguageClient_rootMarkers = {
+    \ 'javascript': ['package.json'],
+    \ 'javascript.jsx': ['package.json'],
+    \ 'typescript': ['package.json'],
+    \ 'typescript.tsx': ['package.json'],
+    \ }
 nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>:normal! m`<CR>
 nnoremap <silent> <leader>b <C-o>
 
