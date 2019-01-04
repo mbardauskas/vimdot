@@ -88,11 +88,31 @@ let g:cpp_class_decl_highlight = 1
 " JSX config
 let g:jsx_ext_required=0
 
+let g:fzf_action = {
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-t': 'tab split' }
 
-" GIT only show files that are not ignored by git
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_extensions = ['line']
-let g:ctrlp_use_caching = 0
+let g:fzf_colors =
+  \ { 'fg':    ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:fzf_layout = { 'down': '15%' }
+
+nmap <leader>h :History<cr>
+nmap <leader>/ :BLines<cr>
+nmap <C-P> :Files<cr>
+map <leader>H :Helptags<cr>
 
 
 "Emmet conf
