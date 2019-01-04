@@ -21,6 +21,10 @@ let g:ale_linters = {
 \}
 
 
+" Magit
+nnoremap <silent> <leader>gs :execute magit#show_magit('h', 1, 1)<CR>
+
+
 " AutoComplete
 let g:deoplete#enable_at_startup = 1
 
