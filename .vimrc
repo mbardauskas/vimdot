@@ -14,7 +14,6 @@ if dein#load_state('~/.cache/dein')
   " Generic
   call dein#add('jreybert/vimagit')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('honza/vim-snippets')
   call dein#add('vim-airline/vim-airline')
   call dein#add('tpope/vim-surround')
   call dein#add('/usr/local/opt/fzf')
