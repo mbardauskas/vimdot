@@ -19,6 +19,7 @@ let g:ale_linters = {
 \   'typescript': ['tsserver'],
 \   'json': ['jsonlint'],
 \}
+autocmd! BufWritePre *.js,*.ts,*.tsx,*.hs :ALEFix
 
 
 " Magit
