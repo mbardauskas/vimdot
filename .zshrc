@@ -91,10 +91,14 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias wstorm='open -a /Applications/WebStorm.app'
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
 export ANDROID_HOME=/Users/martynasb/Library/Android/sdk
 export RCT_NO_LAUNCH_PACKAGER=true
+export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/coding/flutter/bin
 
 # should fix 'git add -p' issue when enter produces ^M
 stty icrnl
