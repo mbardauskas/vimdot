@@ -117,6 +117,8 @@ set list listchars=tab:»·,extends:»,precedes:«,trail:·  " display trailing 
 syntax enable             " enable syntax highlight
 colorscheme darcula
 
+hi Normal ctermfg=188 ctermbg=NONE cterm=NONE guifg=#a9b7c6 guibg=NONE gui=NONE
+
 filetype plugin indent on " enable filetypes detection, plugins and indent
 
 
