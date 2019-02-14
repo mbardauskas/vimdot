@@ -74,6 +74,10 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" disable arrow keys in popups
+inoremap <expr> <Down> pumvisible() ? "" : "\<Down>"
+inoremap <expr> <Up> pumvisible() ? "" : "\<Up>"
+
 
 " vim settings
 set t_Co=256
