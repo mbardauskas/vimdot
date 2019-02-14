@@ -78,6 +78,10 @@ noremap <Right> <NOP>
 inoremap <expr> <Down> pumvisible() ? "" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "" : "\<Up>"
 
+" quick save
+map <C-x> :w<CR>
+imap <C-x> <Esc>:w<CR>i
+
 
 " vim settings
 set t_Co=256
