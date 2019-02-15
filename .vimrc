@@ -79,8 +79,10 @@ inoremap <expr> <Down> pumvisible() ? "" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "" : "\<Up>"
 
 " quick save
-map <C-x> :w<CR>
-imap <C-x> <Esc>:w<CR>i
+noremap <C-a>s :write<CR>
+inoremap <C-a>s <Esc>:write<CR>i
+exec "command W :echoerr 'Use the shortcut: <C-a>s'"
+cabbrev w W
 
 
 " vim settings
