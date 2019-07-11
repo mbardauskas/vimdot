@@ -30,6 +30,7 @@ nnoremap <silent> <leader>gs :execute magit#show_magit('h', 1, 1)<CR>
 
 " AutoComplete
 let g:deoplete#enable_at_startup = 1
+"call deoplete#custom#option('auto_refresh_delay', 300)
 
 let g:gutentags_cache_dir = _cache_dir('gutentags')
 let g:gutentags_file_list_command = 'rg --files'
