@@ -33,6 +33,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+  " try coc.nvim
   call dein#add('autozimu/LanguageClient-neovim', { 'rev': 'next', 'build': 'bash install.sh' })
 
   call dein#add('ludovicchabant/vim-gutentags')
