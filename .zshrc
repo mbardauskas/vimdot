@@ -93,11 +93,16 @@ alias wstorm='open -a /Applications/WebStorm.app'
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
 export ANDROID_HOME=/Users/martynasb/Library/Android/sdk
+export ANDROID_NDK=/Users/martynasb/Library/Android/ndk
+export ANDROID_NDK_HOME=/Users/martynasb/Library/Android/ndk
+export ANDROID_NDK_REPOSITORY=/Users/martynasb/Library/Android/ndk
+export NDK_HOME=/Users/martynasb/Library/Android/ndk
 export RCT_NO_LAUNCH_PACKAGER=true
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_NDK
 export PATH=$PATH:$HOME/coding/flutter/bin
 
 # should fix 'git add -p' issue when enter produces ^M
@@ -117,4 +122,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 KEYTIMEOUT=1
+
+FZF_DEFAULT_COMMAND='ag'
 
