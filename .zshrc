@@ -123,5 +123,4 @@ export NVM_DIR="$HOME/.nvm"
 
 KEYTIMEOUT=1
 
-FZF_DEFAULT_COMMAND='ag'
-
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
