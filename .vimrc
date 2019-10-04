@@ -83,8 +83,7 @@ noremap <silent> § <Esc>:noh<cr>
 inoremap <silent> § <Esc>
 
 " quick save
-noremap <C-a>s :write<CR>
-inoremap <C-a>s <Esc>:write<CR>i
+noremap <leader>s :write<CR>
 exec "command W :echoerr 'Use the shortcut: <C-a>s'"
 cabbrev w W
 
