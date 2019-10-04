@@ -79,6 +79,9 @@ noremap <Right> <NOP>
 inoremap <expr> <Down> pumvisible() ? "" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "" : "\<Up>"
 
+noremap <silent> § <Esc>:noh<cr>
+inoremap <silent> § <Esc>
+
 " quick save
 noremap <C-a>s :write<CR>
 inoremap <C-a>s <Esc>:write<CR>i
