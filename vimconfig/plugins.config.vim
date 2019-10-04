@@ -138,6 +138,11 @@ let g:user_emmet_settings = {
 
 autocmd FileType html,css,scss,javascript.jsx,typescript.tsx EmmetInstall
 
+" ranger integration
+map <leader>l :RangerEdit<cr>
+map <leader>ls :RangerSplit<cr>
+map <leader>lv :RangerVSplit<cr>
+map <leader>lt :RangerTab<cr>
 
 " smooth scrolling
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
