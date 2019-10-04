@@ -99,7 +99,7 @@ set softtabstop=2         " delete 2 spaces when pressing backspace
 set expandtab             " insert spaces when tab is pressed
 set autoindent            " copy indentation of previous line if there are no file type overrides
 
-set mouse=a               " enable mouse in all modes
+"set mouse=a               " enable mouse in all modes
 set scrolloff=3           " keep 3 lines top/bottom when scrolling
 
 set relativenumber        " show line numbers
