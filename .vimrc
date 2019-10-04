@@ -23,6 +23,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('mattn/emmet-vim')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('blueshirts/darcula')
+  call dein#add('terryma/vim-smooth-scroll')
 
   " Linter
   call dein#add('w0rp/ale')
