@@ -98,7 +98,7 @@ set autoindent            " copy indentation of previous line if there are no fi
 "set mouse=a               " enable mouse in all modes
 set scrolloff=3           " keep 3 lines top/bottom when scrolling
 
-set relativenumber        " show line numbers
+"set relativenumber        " show line numbers
 set number                " show exact number on active line
 
 set laststatus=2          " show status line always, not only with splits
