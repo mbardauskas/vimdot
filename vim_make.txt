@@ -10,7 +10,7 @@ cd ~/"$VIMDIR" && exec ./configure \
   --enable-luainterp \
   --with-lua-prefix=/usr/local/Cellar/lua/5.3.5_1 \
   --enable-python3interp \
-  --with-python3-config-dir=/usr/local/Cellar/python/3.7.4/Frameworks/Python.framework/Versions/3.7/lib/python3.7/config-3.7m-darwin \
+  --with-python3-config-dir=/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/config-3.7m-darwin \
   --disable-netbeans \
   --enable-fail-if-missing
 
