@@ -34,15 +34,11 @@ if dein#load_state('~/.cache/dein')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  " try coc.nvim
-  call dein#add('autozimu/LanguageClient-neovim', { 'rev': 'next', 'build': 'bash install.sh' })
-
-  call dein#add('ludovicchabant/vim-gutentags')
-  call dein#add('kristijanhusak/vim-js-file-import')
+  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 
   " JavaScript
   call dein#add('leafgarland/typescript-vim')
-  call dein#add('maksimr/vim-jsbeautify', { 'on_ft' : ['javascript', 'vim', 'json', 'xml', 'html'] })
+  call dein#add('moll/vim-node')
   call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
   call dein#add('pangloss/vim-javascript', { 'on_ft' : ['javascript'] })
 
