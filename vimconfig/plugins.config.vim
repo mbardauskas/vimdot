@@ -80,12 +80,13 @@ let g:LanguageClient_rootMarkers = {
     \ 'typescript': ['package.json'],
     \ 'typescript.tsx': ['package.json'],
     \ }
-nnoremap <silent> <leader>gd :call LanguageClient_textDocument_definition()<CR>:normal! m`<CR>
+nmap <silent> <leader>gd <Plug>(coc-definition)
+"nmap <silent> <leader>gd :call CocAction('jumpDefinition', 'tab drop') <CR>
 nnoremap <silent> <leader>b <C-o>
 
-nnoremap <silent> <leader>rr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>fr :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> <leader>h :call LanguageClient#textDocument_hover()<CR>
+nmap <silent> <leader>rr <Plug>(coc-rename)
+nmap <silent> <leader>fr <Plug>(coc-references)
+nmap <silent> <leader>h :call <SID>show_documentation()<CR>
 
 
 " C++ highlighting
