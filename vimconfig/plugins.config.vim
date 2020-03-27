@@ -59,27 +59,6 @@ function! GutenTagsInit(path) abort
   return 1
 endfunction
 
-
-" language server
-" sh: npm i -g typescript-language-server
-" sh: npm i -g typescript
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_changeThrottle = 0.5
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
-    \ }
-let g:LanguageClient_rootMarkers = {
-    \ 'javascript': ['package.json'],
-    \ 'javascript.jsx': ['package.json'],
-    \ 'typescript': ['package.json'],
-    \ 'typescript.tsx': ['package.json'],
-    \ }
 nmap <silent> <leader>gd <Plug>(coc-definition)
 "nmap <silent> <leader>gd :call CocAction('jumpDefinition', 'tab drop') <CR>
 nnoremap <silent> <leader>b <C-o>
