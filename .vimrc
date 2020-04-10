@@ -25,15 +25,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('blueshirts/darcula')
   call dein#add('terryma/vim-smooth-scroll')
 
-  " Linter
-  call dein#add('w0rp/ale')
-
   " AutoComplete
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 
   " JavaScript

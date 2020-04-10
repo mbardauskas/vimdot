@@ -16,8 +16,4 @@ cd ~/"$VIMDIR" && exec ./configure \
 
 make && sudo make install
 
-# neovim is needed for deoplete
-pip3 install neovim
-
-# make ctags / brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-# brew install ripgrep
+# CocInstall coc-tslint coc-tsserver coc-eslint coc-jest coc-prettier coc-stylelint coc-html

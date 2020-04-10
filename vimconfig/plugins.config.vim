@@ -1,63 +1,9 @@
-" linter options
-let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 300
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s'
-
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'javascript.jsx': ['eslint'],
-\   'typescript': ['tslint'],
-\}
-
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['tsserver'],
-\   'json': ['jsonlint'],
-\}
-autocmd! BufWritePre *.js,*.jsx,*.ts,*.tsx :ALEFix
-imap <C-a>f <Esc>:ALEFix<CR>i
-map <C-a>f :ALEFix<CR>
-
-
 " Magit
 nnoremap <silent> <leader>gs :execute magit#show_magit('h', 1, 1)<CR>
 
 
 " AutoComplete
-let g:deoplete#enable_at_startup = 1
-"call deoplete#custom#option('auto_refresh_delay', 300)
-
-let g:gutentags_cache_dir = _cache_dir('gutentags')
-let g:gutentags_file_list_command = 'rg --files'
-let g:gutentags_generate_on_new = 0
-let g:gutentags_project_root_finder = 'GutenTagsProjectRootFinder'
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_init_user_func = 'GutenTagsInit'
-
-function! GutenTagsProjectRootFinder(path) abort
-   if &filetype =~ 'script'
-    let l:file = ale#path#FindNearestFile(bufnr('%'), 'package.json')
-    if !empty(l:file)
-      return fnamemodify(l:file, ':p:h')
-    endif
-   endif
-   let g:gutentags_project_root_finder = ''
-   let l:path = gutentags#get_project_root(a:path)
-   let g:gutentags_project_root_finder = 'GutenTagsProjectRootFinder'
-   return l:path
-endfunction
-
-function! GutenTagsInit(path) abort
-  if a:path =~ '\(fugitive\|.git/index\)'
-    return 0
-  endif
-  return 1
-endfunction
+let g:coc_config_home = "$HOME/vimdot/vimconfig/"
 
 nmap <silent> <leader>gd <Plug>(coc-definition)
 "nmap <silent> <leader>gd :call CocAction('jumpDefinition', 'tab drop') <CR>
@@ -66,6 +12,11 @@ nnoremap <silent> <leader>b <C-o>
 nmap <silent> <leader>rr <Plug>(coc-rename)
 nmap <silent> <leader>fr <Plug>(coc-references)
 nmap <silent> <leader>h :call <SID>show_documentation()<CR>
+
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>fa  <Plug>(coc-format)
+nmap <leader>fa  <Plug>(coc-format)
 
 
 " C++ highlighting
