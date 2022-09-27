@@ -15,5 +15,5 @@ cd ~/"$VIMDIR" && exec ./configure \
   --enable-fail-if-missing
 
 make && sudo make install
-
+# :call dein#install
 # CocInstall coc-tslint coc-tsserver coc-eslint coc-jest coc-prettier coc-stylelint coc-html
