@@ -91,7 +91,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias wstorm='open -a /Applications/WebStorm.app'
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home
 export ANDROID_HOME=/Users/martynasb/Library/Android/sdk
 export ANDROID_NDK=/Users/martynasb/Library/Android/ndk
 export ANDROID_NDK_HOME=/Users/martynasb/Library/Android/ndk
@@ -123,4 +123,8 @@ export NVM_DIR="$HOME/.nvm"
 
 KEYTIMEOUT=1
 
+export REACT_EDITOR=code
+
 export FZF_DEFAULT_COMMAND='ag --nocolor --hidden --ignore node_modules -g ""'
+
+source /Users/martynasb/.config/broot/launcher/bash/br
