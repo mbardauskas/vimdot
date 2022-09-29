@@ -50,17 +50,6 @@ exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/core-helpers.vim"
 exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/plugins.config.vim"
 exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/my-functions.vim"
 
-" GitGutter settings
-cmap uh GitGutterUndoHunk
-" Find file in NERDtree
-map <C-z> :NERDTreeFind<CR>
-" the same with shorter command
-cmap nf NERDTreeFind
-" Toggle NERDtree
-map <C-Z> :NERDTreeToggle<CR>
-" For conceal markers.
-
-
 " Disable arrow keys in normal mode
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -108,6 +97,8 @@ set incsearch             " search for a pattern while it is being typed
 
 set wildmenu              " cool command autocompletion
 set wildmode=list:longest,full " command autocompletion behaviour
+
+" set spell spelllang=en_us " spellcheck // use coc, :CocInstall coc-spell-check
 
 set nobackup              " no backup files (default)
 set wrap                  " wrap long lines, not same as break (default)

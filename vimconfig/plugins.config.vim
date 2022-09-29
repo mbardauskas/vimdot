@@ -86,3 +86,17 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" GitGutter settings
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
+" Find file in NERDtree
+map <C-z> :NERDTreeFind<CR>
+" the same with shorter command
+cmap nf NERDTreeFind
+" Toggle NERDtree
+map <C-Z> :NERDTreeToggle<CR>
+" For conceal markers.
+
+
+
