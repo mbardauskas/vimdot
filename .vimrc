@@ -22,6 +22,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('mileszs/ack.vim')
   call dein#add('mattn/emmet-vim')
   call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive') "git blame
+  call dein#add('junegunn/vim-peekaboo') "helper for registers
+  call dein#add('AlphaMycelium/pathfinder.vim') "suggests better movements
   call dein#add('blueshirts/darcula')
   call dein#add('terryma/vim-smooth-scroll')
 
