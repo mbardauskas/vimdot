@@ -3,5 +3,6 @@
     "javascript",
     "javascriptreact"
   ],
+  "suggest.noselect": true,
   "coc.preferences.formatOnSaveFiletypes": []
 }
