@@ -4,5 +4,9 @@
     "javascriptreact"
   ],
   "suggest.noselect": true,
-  "coc.preferences.formatOnSaveFiletypes": []
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "cSpell.userWords": [
+    "msid",
+    "shoutout"
+  ]
 }

@@ -17,6 +17,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('vim-airline/vim-airline')
   call dein#add('tpope/vim-surround')
   call dein#add('/usr/local/opt/fzf')
+  call dein#add('junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'})
   call dein#add('junegunn/fzf.vim')
   call dein#add('octol/vim-cpp-enhanced-highlight')
   call dein#add('mileszs/ack.vim')
@@ -72,6 +73,9 @@ cabbrev w W
 " vim settings
 set t_Co=256
 set pastetoggle=<F4>
+set noswapfile
+set nowritebackup
+set nobackup
 "set clipboard+=unnamedplus " can use clipboard
 set tabstop=2             " tab width
 set shiftwidth=2          " number of spaces when shifting (>> and <<)
