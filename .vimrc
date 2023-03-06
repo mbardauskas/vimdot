@@ -54,6 +54,9 @@ exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/core-helpers.vim"
 exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/plugins.config.vim"
 exec "source " . s:VIM_CONFIG_DIR . "/vimconfig/my-functions.vim"
 
+" Make comma the leader key
+map , <Leader>
+
 " Disable arrow keys in normal mode
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -71,7 +74,6 @@ inoremap <silent> § <Esc>
 noremap <leader>s :write<CR>
 exec "command W :echoerr 'Use the shortcut: <C-a>s'"
 cabbrev w W
-
 
 " vim settings
 set t_Co=256
