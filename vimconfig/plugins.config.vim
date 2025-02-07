@@ -50,7 +50,7 @@ let g:fzf_layout = { 'down': '15%' }
 
 nmap <leader>h :History<cr>
 nmap <leader>/ :BLines<cr>
-nmap <C-P> :Files<cr>
+nmap <C-P> :GFiles<cr>
 map <leader>H :Helptags<cr>
 
 
@@ -83,7 +83,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " Use ag instead of ack
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --ignore-dir node_modules --ignore src/types/generated.ts'
 endif
 
 " GitGutter settings

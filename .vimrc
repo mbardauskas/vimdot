@@ -4,46 +4,48 @@ endif
 
 let s:VIM_CONFIG_DIR = '~/vimdot'
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+let s:dein_base = '~/.cache/dein'
+let s:dein_src = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
 
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
+execute 'set runtimepath+=' . s:dein_src
 
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+"set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-  " Generic
-  call dein#add('jreybert/vimagit')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('tpope/vim-surround')
-  "call dein#add('/usr/local/opt/fzf')
-  "call dein#add('/usr/bin/fzf')
-  "call dein#add('junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'})
-  "call dein#add('junegunn/fzf.vim')
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('octol/vim-cpp-enhanced-highlight')
-  call dein#add('mileszs/ack.vim')
-  call dein#add('mattn/emmet-vim')
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('tpope/vim-fugitive') "git blame
-  call dein#add('junegunn/vim-peekaboo') "helper for registers
-  call dein#add('AlphaMycelium/pathfinder.vim') "suggests better movements
-  call dein#add('blueshirts/darcula')
-  call dein#add('terryma/vim-smooth-scroll')
+call dein#begin(s:dein_base)
 
-  " AutoComplete
-  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+call dein#add(s:dein_src)
 
-  " JavaScript
-  call dein#add('leafgarland/typescript-vim')
-  call dein#add('moll/vim-node')
-  call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
-  call dein#add('pangloss/vim-javascript', { 'on_ft' : ['javascript'] })
+" Generic
+call dein#add('jreybert/vimagit')
+call dein#add('scrooloose/nerdtree')
+call dein#add('vim-airline/vim-airline')
+call dein#add('tpope/vim-surround')
+"call dein#add('/usr/local/opt/fzf')
+"call dein#add('/usr/bin/fzf')
+"call dein#add('junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'})
+"call dein#add('junegunn/fzf.vim')
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+call dein#add('octol/vim-cpp-enhanced-highlight')
+call dein#add('mileszs/ack.vim')
+call dein#add('mattn/emmet-vim')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('tpope/vim-fugitive') "git blame
+call dein#add('junegunn/vim-peekaboo') "helper for registers
+call dein#add('AlphaMycelium/pathfinder.vim') "suggests better movements
+call dein#add('blueshirts/darcula')
+call dein#add('terryma/vim-smooth-scroll')
 
-  call dein#end()
-  call dein#save_state()
-endif
+" AutoComplete
+call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+
+" JavaScript
+call dein#add('leafgarland/typescript-vim')
+call dein#add('moll/vim-node')
+call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
+call dein#add('pangloss/vim-javascript', { 'on_ft' : ['javascript'] })
+
+call dein#end()
 
 filetype plugin indent on
 

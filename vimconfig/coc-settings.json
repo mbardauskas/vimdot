@@ -4,6 +4,7 @@
     "javascriptreact"
   ],
   "suggest.noselect": true,
+  "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [],
   "cSpell.userWords": [
     "msid",
