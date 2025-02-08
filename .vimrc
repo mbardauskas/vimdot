@@ -45,7 +45,21 @@ call dein#add('moll/vim-node')
 call dein#add('mxw/vim-jsx', { 'on_ft' : ['javascript', 'jsx'] })
 call dein#add('pangloss/vim-javascript', { 'on_ft' : ['javascript'] })
 
+" AI related stuff
+call dein#add('madox2/vim-ai')
+
 call dein#end()
+
+" AI related stuff
+let g:vim_ai_chat = {
+\  "options": {
+\    "model": "gpt-4-turbo",
+\    "stream": 0,
+\    "temperature": 1,
+\    "max_completion_tokens": 25000,
+\    "initial_prompt": "",
+\  },
+\}
 
 filetype plugin indent on
 
