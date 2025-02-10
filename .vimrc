@@ -51,15 +51,63 @@ call dein#add('madox2/vim-ai')
 call dein#end()
 
 " AI related stuff
+let g:vim_ai_roles_config_file = '~/vimdot/vimconfig/vim-ai-roles.ini'
+let g:vim_ai_complete = {
+\  "prompt": "",
+\  "engine": "chat",
+\  "options": {
+\    "model": "gpt-3.5-turbo",
+\    "endpoint_url": "https://api.openai.com/v1/chat/completions",
+\    "max_tokens": 0,
+\    "max_completion_tokens": 0,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "stream": 1,
+\    "enable_auth": 1,
+\    "token_file_path": "",
+\    "selection_boundary": "#####",
+\    "initial_prompt": s:initial_complete_prompt,
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
+let g:vim_ai_edit = {
+\  "prompt": "",
+\  "engine": "chat",
+\  "options": {
+\    "model": "gpt-3.5-turbo",
+\    "endpoint_url": "https://api.openai.com/v1/chat/completions",
+\    "max_tokens": 0,
+\    "max_completion_tokens": 0,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "stream": 1,
+\    "enable_auth": 1,
+\    "token_file_path": "",
+\    "selection_boundary": "#####",
+\    "initial_prompt": s:initial_complete_prompt,
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-4-turbo",
+\    "model": "gpt-3.5-turbo",
 \    "stream": 0,
 \    "temperature": 1,
 \    "max_completion_tokens": 25000,
 \    "initial_prompt": "",
 \  },
 \}
+let s:initial_chat_prompt =<< trim END
+>>> system
+
+You are a general coding assistant.
+If you attach a code block add syntax type after ``` to enable syntax highlighting.
+END
+
 
 filetype plugin indent on
 
