@@ -51,6 +51,12 @@ call dein#add('madox2/vim-ai')
 call dein#end()
 
 " AI related stuff
+let s:initial_complete_prompt =<< trim END
+>>> system
+
+You are a general coding assistant, leaning towards clean code expert.
+If you attach a code block add syntax type after ``` to enable syntax highlighting.
+END
 let g:vim_ai_roles_config_file = '~/vimdot/vimconfig/vim-ai-roles.ini'
 let g:vim_ai_complete = {
 \  "prompt": "",
@@ -101,12 +107,6 @@ let g:vim_ai_chat = {
 \    "initial_prompt": "",
 \  },
 \}
-let s:initial_chat_prompt =<< trim END
->>> system
-
-You are a general coding assistant.
-If you attach a code block add syntax type after ``` to enable syntax highlighting.
-END
 
 
 filetype plugin indent on
