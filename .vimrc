@@ -62,7 +62,7 @@ let g:vim_ai_complete = {
 \  "prompt": "",
 \  "engine": "chat",
 \  "options": {
-\    "model": "gpt-3.5-turbo",
+\    "model": "gpt-4-turbo",
 \    "endpoint_url": "https://api.openai.com/v1/chat/completions",
 \    "max_tokens": 0,
 \    "max_completion_tokens": 0,
@@ -82,7 +82,7 @@ let g:vim_ai_edit = {
 \  "prompt": "",
 \  "engine": "chat",
 \  "options": {
-\    "model": "gpt-3.5-turbo",
+\    "model": "gpt-4-turbo",
 \    "endpoint_url": "https://api.openai.com/v1/chat/completions",
 \    "max_tokens": 0,
 \    "max_completion_tokens": 0,
@@ -100,10 +100,10 @@ let g:vim_ai_edit = {
 \}
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-3.5-turbo",
+\    "model": "gpt-4-turbo",
 \    "stream": 0,
-\    "temperature": 1,
-\    "max_completion_tokens": 25000,
+\    "max_tokens": 4000,
+\    "temperature": 0.75,
 \    "initial_prompt": "",
 \  },
 \}
